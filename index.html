@@ -111,7 +111,7 @@
             <a href="pikipiki.html" class="nav-link" data-i18n="nav_pikipiki"><i class="fas fa-motorcycle"></i> Pikipiki</a>
             <a href="guta.html" class="nav-link" data-i18n="nav_guta"><i class="fas fa-tractor"></i> Guta</a>
             <a href="#kuhusu" class="nav-link" data-i18n="nav_about"><i class="fas fa-info-circle"></i> Kuhusu Sisi</a>
-            <a href="#wasiliana" class="nav-link" data-i18n="nav_contact"><i class="fas fa-phone"></i> Wasiliana Nasi</a>
+            <a href="#categories" class="nav-link" data-i18n="nav_categories"><i class="fas fa-th-large"></i> Bidhaa</a>
             <a href="qrcode.html" class="nav-link"><i class="fas fa-qrcode"></i> QR Code</a>
             <a href="login.html" class="nav-link" data-i18n="nav_login"><i class="fas fa-sign-in-alt"></i> Ingia</a>
         </nav>
@@ -159,7 +159,7 @@
             <h1 class="hero-title" data-i18n="hero_title">WELCOME MSEMA KWEL STORE</h1>
             <p class="hero-tagline" data-i18n="hero_subtitle">Karibu MSEMA KWEL STORE</p>
             <div class="hero-cta">
-                <a href="#wasiliana" class="btn btn-primary btn-lg" data-i18n="cta_contact"><i class="fas fa-phone"></i> Wasiliana Nasi</a>
+                <a href="#categories" class="btn btn-primary btn-lg" data-i18n="cta_categories"><i class="fas fa-th-large"></i> Angalia Bidhaa</a>
             </div>
         </div>
     </div>
@@ -253,7 +253,7 @@
     <div class="container about-inner">
         <h2 class="section-title" data-i18n="about_title"><i class="fas fa-info-circle"></i> Kuhusu MSEMA KWEL STORE</h2>
         <p class="about-text" data-i18n="about_desc">MSEMA KWEL STORE ni duka linalouza Pikipiki, Bajaji, Guta, Magodolo na Mabati. Tunazingatia urahisi wa mteja kupata taarifa za bidhaa na kuwasiliana nasi kwa haraka.</p>
-        <a href="#wasiliana" class="btn btn-primary" data-i18n="cta_contact2"><i class="fas fa-phone"></i> Wasiliana Nasi</a>
+        <a href="#categories" class="btn btn-primary" data-i18n="cta_categories2"><i class="fas fa-th-large"></i> Angalia Bidhaa</a>
     </div>
 </section>
 
@@ -282,64 +282,6 @@
     </div>
 </section>
 
-<!-- ════ CONTACT ════ -->
-<section class="section contact" id="wasiliana">
-    <div class="container">
-        <div class="section-header">
-            <h2 class="section-title" data-i18n="contact_title"><i class="fas fa-envelope"></i> Wasiliana na MSEMA KWEL STORE</h2>
-            <p class="section-subtitle" data-i18n="contact_subtitle">Una swali kuhusu bidhaa? Tuma maombi yako na tutawasiliana nawe.</p>
-        </div>
-        <div class="contact-layout">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <div class="contact-icon-wrap"><span><i class="fas fa-phone-alt"></i></span></div>
-                    <div><h3 data-i18n="contact_phone">Simu</h3><p data-i18n="contact_phone_val">Weka namba ya duka hapa</p></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon-wrap"><span><i class="fab fa-whatsapp"></i></span></div>
-                    <div><h3>WhatsApp</h3><p data-i18n="contact_whatsapp">Weka WhatsApp number hapa</p></div>
-                </div>
-                <div class="contact-item">
-                    <div class="contact-icon-wrap"><span><i class="fas fa-map-marker-alt"></i></span></div>
-                    <div><h3 data-i18n="contact_location">Location</h3><p data-i18n="contact_location_val">Weka eneo la duka hapa</p></div>
-                </div>
-            </div>
-            <form class="contact-form" id="contactForm" novalidate>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label data-i18n="form_name"><i class="fas fa-user"></i> Jina lako</label>
-                        <input type="text" id="cName" data-i18n-placeholder="form_name_ph" placeholder="Andika jina lako">
-                        <span class="error-msg" data-i18n="err_name">Tafadhali weka jina lako.</span>
-                    </div>
-                    <div class="form-group">
-                        <label data-i18n="form_phone"><i class="fas fa-phone"></i> Namba ya simu</label>
-                        <input type="tel" id="cPhone" placeholder="07XXXXXXXX">
-                        <span class="error-msg" data-i18n="err_phone">Tafadhali weka namba yako ya simu.</span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label data-i18n="form_product"><i class="fas fa-motorcycle"></i> Bidhaa</label>
-                    <select id="cProduct">
-                        <option value="" data-i18n="form_select">Chagua bidhaa...</option>
-                        <option value="Pikipiki">Pikipiki</option>
-                        <option value="Guta">Guta</option>
-                        <option value="Bajaji">Bajaji</option>
-                        <option value="Magodolo">Magodolo</option>
-                        <option value="Mabati">Mabati</option>
-                    </select>
-                    <span class="error-msg" data-i18n="err_product">Tafadhali chagua bidhaa.</span>
-                </div>
-                <div class="form-group">
-                    <label data-i18n="form_message"><i class="fas fa-comment"></i> Ujumbe</label>
-                    <textarea id="cMessage" rows="4" data-i18n-placeholder="form_message_ph" placeholder="Andika unachohitaji..."></textarea>
-                    <span class="error-msg" data-i18n="err_message">Tafadhali andika ujumbe wako.</span>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block" data-i18n="btn_submit"><i class="fas fa-paper-plane"></i> Tuma Maombi</button>
-            </form>
-        </div>
-    </div>
-</section>
-
 <!-- ════ FOOTER ════ -->
 <footer class="footer">
     <div class="container footer-inner">
@@ -351,10 +293,10 @@
             <h4 data-i18n="footer_menu">Menu</h4>
             <ul>
                 <li><a href="#home" data-i18n="nav_home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#categories" data-i18n="nav_categories"><i class="fas fa-th-large"></i> Bidhaa</a></li>
                 <li><a href="pikipiki.html" data-i18n="nav_pikipiki"><i class="fas fa-motorcycle"></i> Pikipiki</a></li>
                 <li><a href="guta.html" data-i18n="nav_guta"><i class="fas fa-tractor"></i> Guta</a></li>
                 <li><a href="#kuhusu" data-i18n="nav_about"><i class="fas fa-info-circle"></i> Kuhusu Sisi</a></li>
-                <li><a href="#wasiliana" data-i18n="nav_contact"><i class="fas fa-phone"></i> Wasiliana Nasi</a></li>
                 <li><a href="qrcode.html"><i class="fas fa-qrcode"></i> QR Code</a></li>
                 <li><a href="login.html" data-i18n="nav_login"><i class="fas fa-sign-in-alt"></i> Ingia</a></li>
             </ul>
@@ -373,11 +315,11 @@ document.addEventListener('DOMContentLoaded', function() {
             nav_pikipiki: '<i class="fas fa-motorcycle"></i> Pikipiki',
             nav_guta: '<i class="fas fa-tractor"></i> Guta',
             nav_about: '<i class="fas fa-info-circle"></i> Kuhusu Sisi',
-            nav_contact: '<i class="fas fa-phone"></i> Wasiliana Nasi',
+            nav_categories: '<i class="fas fa-th-large"></i> Bidhaa',
             nav_login: '<i class="fas fa-sign-in-alt"></i> Ingia',
             hero_title: 'WELCOME MSEMA KWEL STORE',
             hero_subtitle: 'Karibu MSEMA KWEL STORE',
-            cta_contact: '<i class="fas fa-phone"></i> Wasiliana Nasi',
+            cta_categories: '<i class="fas fa-th-large"></i> Angalia Bidhaa',
             why_title: '<i class="fas fa-question-circle"></i> Kwa Nini MSEMA KWEL STORE?',
             why_trust_title: 'Kuaminika',
             why_trust_desc: 'Huduma yenye uwazi na mawasiliano rahisi.',
@@ -387,26 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
             why_service_desc: 'Tupo tayari kukusaidia kupata bidhaa inayokufaa.',
             about_title: '<i class="fas fa-info-circle"></i> Kuhusu MSEMA KWEL STORE',
             about_desc: 'MSEMA KWEL STORE ni duka linalouza Pikipiki, Bajaji, Guta, Magodolo na Mabati. Tunazingatia urahisi wa mteja kupata taarifa za bidhaa na kuwasiliana nasi kwa haraka.',
-            cta_contact2: '<i class="fas fa-phone"></i> Wasiliana Nasi',
-            contact_title: '<i class="fas fa-envelope"></i> Wasiliana na MSEMA KWEL STORE',
-            contact_subtitle: 'Una swali kuhusu bidhaa? Tuma maombi yako na tutawasiliana nawe.',
-            contact_phone: 'Simu',
-            contact_phone_val: 'Weka namba ya duka hapa',
-            contact_whatsapp: 'Weka WhatsApp number hapa',
-            contact_location: 'Location',
-            contact_location_val: 'Weka eneo la duka hapa',
-            form_name: '<i class="fas fa-user"></i> Jina lako',
-            form_name_ph: 'Andika jina lako',
-            form_phone: '<i class="fas fa-phone"></i> Namba ya simu',
-            form_product: '<i class="fas fa-motorcycle"></i> Bidhaa',
-            form_select: 'Chagua bidhaa...',
-            form_message: '<i class="fas fa-comment"></i> Ujumbe',
-            form_message_ph: 'Andika unachohitaji...',
-            err_name: 'Tafadhali weka jina lako.',
-            err_phone: 'Tafadhali weka namba yako ya simu.',
-            err_product: 'Tafadhali chagua bidhaa.',
-            err_message: 'Tafadhali andika ujumbe wako.',
-            btn_submit: '<i class="fas fa-paper-plane"></i> Tuma Maombi',
+            cta_categories2: '<i class="fas fa-th-large"></i> Angalia Bidhaa',
             cat_title: '<i class="fas fa-th-large"></i> Bidhaa Zetu',
             cat_subtitle: 'Chagua aina ya bidhaa unayotafuta',
             cat_pikipiki: 'Pikipiki',
@@ -427,11 +350,11 @@ document.addEventListener('DOMContentLoaded', function() {
             nav_pikipiki: '<i class="fas fa-motorcycle"></i> Motorcycles',
             nav_guta: '<i class="fas fa-tractor"></i> Trailers',
             nav_about: '<i class="fas fa-info-circle"></i> About Us',
-            nav_contact: '<i class="fas fa-phone"></i> Contact Us',
+            nav_categories: '<i class="fas fa-th-large"></i> Products',
             nav_login: '<i class="fas fa-sign-in-alt"></i> Login',
             hero_title: 'WELCOME MSEMA KWEL STORE',
             hero_subtitle: 'Welcome to MSEMA KWEL STORE',
-            cta_contact: '<i class="fas fa-phone"></i> Contact Us',
+            cta_categories: '<i class="fas fa-th-large"></i> View Products',
             why_title: '<i class="fas fa-question-circle"></i> Why MSEMA KWEL STORE?',
             why_trust_title: 'Trusted',
             why_trust_desc: 'Transparent service with easy communication.',
@@ -441,26 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
             why_service_desc: 'We are ready to help you find what suits you.',
             about_title: '<i class="fas fa-info-circle"></i> About MSEMA KWEL STORE',
             about_desc: 'MSEMA KWEL STORE is a shop selling Motorcycles, TukTuks, Trailers, Wood and Iron Sheets. We focus on making it easy for customers to get product information and contact us quickly.',
-            cta_contact2: '<i class="fas fa-phone"></i> Contact Us',
-            contact_title: '<i class="fas fa-envelope"></i> Contact MSEMA KWEL STORE',
-            contact_subtitle: 'Have a question about our products? Send your inquiry and we will get back to you.',
-            contact_phone: 'Phone',
-            contact_phone_val: 'Enter store phone number here',
-            contact_whatsapp: 'Enter WhatsApp number here',
-            contact_location: 'Location',
-            contact_location_val: 'Enter store location here',
-            form_name: '<i class="fas fa-user"></i> Your Name',
-            form_name_ph: 'Enter your name',
-            form_phone: '<i class="fas fa-phone"></i> Phone Number',
-            form_product: '<i class="fas fa-motorcycle"></i> Product',
-            form_select: 'Select a product...',
-            form_message: '<i class="fas fa-comment"></i> Message',
-            form_message_ph: 'Write what you need...',
-            err_name: 'Please enter your name.',
-            err_phone: 'Please enter your phone number.',
-            err_product: 'Please select a product.',
-            err_message: 'Please enter your message.',
-            btn_submit: '<i class="fas fa-paper-plane"></i> Send Inquiry',
+            cta_categories2: '<i class="fas fa-th-large"></i> View Products',
             cat_title: '<i class="fas fa-th-large"></i> Our Products',
             cat_subtitle: 'Choose the type of product you are looking for',
             cat_pikipiki: 'Motorcycles',
@@ -515,8 +419,6 @@ document.addEventListener('DOMContentLoaded', function() {
             navLinks.classList.remove('active');
         });
     });
-
-    var contactForm = document.getElementById('contactForm');
 
     // ════ QR CODE MODAL ════
     var STORE_URL = window.location.origin + '/MSEMA-KWELI-STORE/';
@@ -574,33 +476,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(link);
     });
     inlinePrintBtn.addEventListener('click', function() { window.print(); });
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            contactForm.querySelectorAll('.form-group').forEach(function(g) { g.classList.remove('error'); });
-            var valid = true;
-            ['cName', 'cPhone', 'cProduct', 'cMessage'].forEach(function(id) {
-                var el = document.getElementById(id);
-                if (!el.value.trim()) { el.closest('.form-group').classList.add('error'); valid = false; }
-            });
-            if (!valid) return;
-            var msgData = {
-                name: document.getElementById('cName').value.trim(),
-                phone: document.getElementById('cPhone').value.trim(),
-                product: document.getElementById('cProduct').value,
-                message: document.getElementById('cMessage').value.trim(),
-                date: new Date().toLocaleDateString('en-GB')
-            };
-            var savedMsgs = JSON.parse(localStorage.getItem('msemakwel_messages') || '[]');
-            savedMsgs.push(msgData);
-            localStorage.setItem('msemakwel_messages', JSON.stringify(savedMsgs));
-            var msg = currentLang === 'sw'
-                ? '<div style="text-align:center;padding:30px 0"><span style="font-size:2.5rem;color:#16a34a"><i class="fas fa-check-circle"></i></span><h3 style="margin-top:10px">Asante!</h3><p style="color:#666;font-size:0.88rem">Ujumbe wako umewasilishwa. Tutawasiliana nawe hivi karibuni.</p></div>'
-                : '<div style="text-align:center;padding:30px 0"><span style="font-size:2.5rem;color:#16a34a"><i class="fas fa-check-circle"></i></span><h3 style="margin-top:10px">Thank You!</h3><p style="color:#666;font-size:0.88rem">Your message has been submitted. We will contact you soon.</p></div>';
-            contactForm.innerHTML = msg;
-        });
-    }
 });
 </script>
 </body>
