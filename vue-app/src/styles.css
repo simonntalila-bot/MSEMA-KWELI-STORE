@@ -175,10 +175,10 @@ input, select, textarea { font-family: inherit; }
     letter-spacing: 0.5px;
 }
 .hero-title {
-    font-size: 3.8rem; font-weight: 900; color: #fff;
-    line-height: 1.1; margin-bottom: 16px;
-    letter-spacing: -1px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4);
+    font-size: 4.5rem; font-weight: 900; color: #fff;
+    line-height: 1.05; margin-bottom: 20px; margin-top: -30px;
+    letter-spacing: -1px; text-transform: uppercase;
+    text-shadow: 0 3px 16px rgba(0,0,0,0.6), 0 1px 3px rgba(0,0,0,0.5);
 }
 .hero-subtitle { font-size: 1.2rem; font-weight: 600; color: #fff; margin-bottom: 12px; text-shadow: 0 1px 6px rgba(0,0,0,0.4); }
 .hero-bar {
@@ -565,7 +565,7 @@ input, select, textarea { font-family: inherit; }
     }
     .nav-dropdown:hover .dropdown-menu, .nav-dropdown.open .dropdown-menu { display: flex; }
     .hero-slide { min-height: 420px; padding: 40px 0 36px; }
-    .hero-title { font-size: 2rem; }
+    .hero-title { font-size: 2.5rem; margin-top: -20px; }
     .hero-subtitle { font-size: 0.95rem; }
     .hero-desc { font-size: 0.85rem; padding: 8px 12px; }
     .hero-bar { font-size: 0.75rem; padding: 5px 14px; }
