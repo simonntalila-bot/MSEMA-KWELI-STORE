@@ -4,6 +4,7 @@
             <img src="/hero.jpg" alt="MSEMA KWEL STORE" class="hero-bg-img">
             <div class="hero-overlay"></div>
             <div class="container hero-inner">
+                <h1 class="hero-title">WELCOME TO MSEMA KWELI STORE</h1>
                 <p class="hero-subtitle">{{ i18n.t('hero_subtitle') }}</p>
                 <div class="hero-categories">
                     <router-link
