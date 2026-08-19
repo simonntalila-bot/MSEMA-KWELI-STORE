@@ -438,7 +438,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var contactForm = document.getElementById('contactForm');
 
     // ════ QR CODE MODAL ════
-    var STORE_URL = 'https://simonntalila-bot.github.io/MSEMA-KWELI-STORE/';
+    var STORE_URL = window.location.origin + '/MSEMA-KWELI-STORE/';
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        STORE_URL = window.location.origin + '/';
+    }
     var qrNavBtn = document.getElementById('qrNavBtn');
     var qrModal = document.getElementById('qrModal');
     var qrModalClose = document.getElementById('qrModalClose');
@@ -478,7 +481,6 @@ document.addEventListener('DOMContentLoaded', function() {
     var inlineQRUrl = document.getElementById('inlineQRUrl');
     var inlineDownloadBtn = document.getElementById('inlineDownloadBtn');
     var inlinePrintBtn = document.getElementById('inlinePrintBtn');
-    var STORE_URL = 'https://simonntalila-bot.github.io/MSEMA-KWELI-STORE/';
     var inlineQrApiUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=' + encodeURIComponent(STORE_URL) + '&format=png&margin=10&color=064E3B&bgcolor=FFFFFF';
     inlineQR.src = inlineQrApiUrl;
     inlineQRUrl.textContent = STORE_URL;

@@ -359,7 +359,10 @@
     var qrError = document.getElementById('qrError');
     var qrContainer = document.getElementById('qrcode');
 
-    var defaultUrl = 'https://simonntalila-bot.github.io/MSEMA-KWELI-STORE/';
+    var defaultUrl = window.location.origin + '/MSEMA-KWELI-STORE/';
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        defaultUrl = window.location.origin + '/';
+    }
     urlInput.value = defaultUrl;
 
     function showError(msg) {
