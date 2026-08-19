@@ -200,6 +200,31 @@
     </div>
 </section>
 
+<!-- ════ QR CODE SECTION ════ -->
+<section class="section" id="qrcode-section" style="background: linear-gradient(135deg, #064E3B, #047857); padding: 50px 0;">
+    <div class="container" style="text-align:center;">
+        <h2 style="color:#FACC15; font-size:1.5rem; font-weight:900; margin-bottom:8px;"><i class="fas fa-qrcode"></i> QR Code ya Duka</h2>
+        <p style="color:rgba(255,255,255,0.85); font-size:0.9rem; margin-bottom:30px;">Scani QR code hii na kamera ya simu yako kuingia moja kwa moja kwenye duka</p>
+
+        <div style="display:inline-block; background:#fff; padding:20px; border-radius:16px; box-shadow: 0 12px 40px rgba(0,0,0,0.3);">
+            <img id="inlineQRCode" src="" alt="QR Code MSEMA KWEL STORE" style="display:block; width:250px; height:250px;">
+        </div>
+
+        <p id="inlineQRUrl" style="color:rgba(255,255,255,0.7); font-size:0.75rem; margin-top:14px; word-break:break-all;"></p>
+
+        <div style="display:flex; gap:12px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
+            <button id="inlineDownloadBtn" style="padding:12px 28px; font-size:0.9rem; font-weight:700; font-family:inherit; border:none; border-radius:8px; background:#FACC15; color:#064E3B; cursor:pointer; display:flex; align-items:center; gap:8px; transition:all 0.2s;">
+                <i class="fas fa-download"></i> Pakua QR Code
+            </button>
+            <button id="inlinePrintBtn" style="padding:12px 28px; font-size:0.9rem; font-weight:700; font-family:inherit; border:2px solid #fff; border-radius:8px; background:transparent; color:#fff; cursor:pointer; display:flex; align-items:center; gap:8px; transition:all 0.2s;">
+                <i class="fas fa-print"></i> Chapisha QR Code
+            </button>
+        </div>
+
+        <p style="color:rgba(255,255,255,0.6); font-size:0.78rem; margin-top:20px;"><i class="fas fa-info-circle"></i> Bofya "Chapisha" kukichapisha na kuweka kwenye duka lako</p>
+    </div>
+</section>
+
 <!-- ════ CONTACT ════ -->
 <section class="section contact" id="wasiliana">
     <div class="container">
@@ -447,6 +472,25 @@ document.addEventListener('DOMContentLoaded', function() {
         link.click();
         document.body.removeChild(link);
     });
+
+    // ════ INLINE QR CODE (ndani ya page) ════
+    var inlineQR = document.getElementById('inlineQRCode');
+    var inlineQRUrl = document.getElementById('inlineQRUrl');
+    var inlineDownloadBtn = document.getElementById('inlineDownloadBtn');
+    var inlinePrintBtn = document.getElementById('inlinePrintBtn');
+    var STORE_URL = 'https://simonntalila-bot.github.io/MSEMA-KWELI-STORE/';
+    var inlineQrApiUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=' + encodeURIComponent(STORE_URL) + '&format=png&margin=10&color=064E3B&bgcolor=FFFFFF';
+    inlineQR.src = inlineQrApiUrl;
+    inlineQRUrl.textContent = STORE_URL;
+    inlineDownloadBtn.addEventListener('click', function() {
+        var link = document.createElement('a');
+        link.download = 'MSEMA-KWEL-QRCode.png';
+        link.href = inlineQrApiUrl;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    });
+    inlinePrintBtn.addEventListener('click', function() { window.print(); });
 
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {

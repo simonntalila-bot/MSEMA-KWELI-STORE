@@ -77,6 +77,22 @@
     </div>
 </section>
 
+<!-- ════ QR CODE SECTION ════ -->
+<section class="pk-section" style="background:linear-gradient(135deg,#064E3B,#047857);padding:40px 0;text-align:center;">
+    <div class="container">
+        <h2 style="color:#FACC15;font-size:1.3rem;font-weight:900;margin-bottom:6px;"><i class="fas fa-qrcode"></i> QR Code ya Duka</h2>
+        <p style="color:rgba(255,255,255,0.85);font-size:0.85rem;margin-bottom:24px;">Scani na kamera ya simu kuingia moja kwa moja kwenye duka</p>
+        <div style="display:inline-block;background:#fff;padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.3);">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A%2F%2Fsimonntalila-bot.github.io%2FMSEMA-KWELI-STORE%2F&format=png&margin=10&color=064E3B&bgcolor=FFFFFF" alt="QR Code MSEMA KWEL STORE" style="display:block;width:200px;height:200px;">
+        </div>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.72rem;margin-top:12px;word-break:break-all;">https://simonntalila-bot.github.io/MSEMA-KWELI-STORE/</p>
+        <div style="display:flex;gap:10px;justify-content:center;margin-top:20px;flex-wrap:wrap;">
+            <button onclick="var l=document.createElement('a');l.download='MSEMA-KWEL-QRCode.png';l.href=this.closest('section').querySelector('img').src;document.body.appendChild(l);l.click();document.body.removeChild(l);" style="padding:11px 24px;font-size:0.85rem;font-weight:700;font-family:inherit;border:none;border-radius:8px;background:#FACC15;color:#064E3B;cursor:pointer;display:flex;align-items:center;gap:6px;"><i class="fas fa-download"></i> Pakua</button>
+            <button onclick="window.print();" style="padding:11px 24px;font-size:0.85rem;font-weight:700;font-family:inherit;border:2px solid #fff;border-radius:8px;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;gap:6px;"><i class="fas fa-print"></i> Chapisha</button>
+        </div>
+    </div>
+</section>
+
 <!-- ════ PAY NOW MODAL ════ -->
 <div class="modal-overlay" id="payOverlay">
     <div class="modal pay-modal">
