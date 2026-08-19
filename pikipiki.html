@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="sw" data-lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pikipiki — MSEMA KWEL STORE</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏍️</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pikipiki.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ════ NAVBAR ════ -->
+<header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+        <a href="index.html" class="navbar-brand">
+            <span class="brand-icon"><i class="fas fa-store"></i></span>
+            <div class="brand-text">
+                <span class="brand-name">MSEMA KWEL STORE</span>
+                <span class="brand-tagline">QUALITY &bull; TRUST &bull; SERVICE</span>
+            </div>
+        </a>
+        <nav class="navbar-links" id="navLinks">
+            <a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a>
+            <a href="pikipiki.html" class="nav-link active"><i class="fas fa-motorcycle"></i> Pikipiki</a>
+            <a href="index.html#kuhusu" class="nav-link"><i class="fas fa-info-circle"></i> Kuhusu Sisi</a>
+            <a href="index.html#wasiliana" class="nav-link"><i class="fas fa-phone"></i> Wasiliana Nasi</a>
+        </nav>
+        <div class="navbar-actions">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- ════ PIKIPIKI CATALOGUE ════ -->
+<section class="pk-section">
+    <div class="container">
+
+        <div class="pk-header">
+            <h1 class="pk-title"><i class="fas fa-motorcycle"></i> PIKIPIKI</h1>
+            <p class="pk-subtitle">Chagua chapa (brand) ya pikipiki unayohitaji kuona aina za models zinazopatikana.</p>
+            <div class="pk-divider"></div>
+        </div>
+
+        <!-- BRAND SELECTOR -->
+        <div class="brand-selector" id="brandSelector">
+            <button class="brand-card active" data-brand="bajaj">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 80 40" width="56" height="28"><text x="40" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="22" font-weight="900" fill="#003DA5">BAJAJ</text></svg>
+                </div>
+                <span>Bajaj</span>
+            </button>
+            <button class="brand-card" data-brand="tvs">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 80 40" width="56" height="28"><text x="40" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="22" font-weight="900" fill="#E31837">TVS</text></svg>
+                </div>
+                <span>TVS</span>
+            </button>
+            <button class="brand-card" data-brand="haojue">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 90 40" width="60" height="28"><text x="45" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="16" font-weight="900" fill="#007B3A">HAOJUE</text></svg>
+                </div>
+                <span>Haojue</span>
+            </button>
+            <button class="brand-card" data-brand="honda">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 80 40" width="56" height="28"><text x="40" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="18" font-weight="900" fill="#CC0000">HONDA</text></svg>
+                </div>
+                <span>Honda</span>
+            </button>
+            <button class="brand-card" data-brand="yamaha">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 90 40" width="60" height="28"><text x="45" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="16" font-weight="900" fill="#0033A0">YAMAHA</text></svg>
+                </div>
+                <span>Yamaha</span>
+            </button>
+            <button class="brand-card" data-brand="shineray">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 90 40" width="60" height="28"><text x="45" y="28" text-anchor="middle" font-family="Arial Black,sans-serif" font-size="14" font-weight="900" fill="#FF6600">SHINERAY</text></svg>
+                </div>
+                <span>Shineray</span>
+            </button>
+        </div>
+
+        <!-- MODELS CONTAINER -->
+        <div class="models-container" id="modelsContainer"></div>
+
+    </div>
+</section>
+
+<!-- ════ PAY NOW MODAL ════ -->
+<div class="modal-overlay" id="payOverlay">
+    <div class="modal pay-modal">
+        <button class="modal-close" id="payClose">&times;</button>
+        <div class="pay-header">
+            <img id="payImg" src="" alt="">
+            <div>
+                <h2 id="payName"></h2>
+                <p id="payBrand"></p>
+                <div class="pay-price" id="payPrice"></div>
+            </div>
+        </div>
+        <form class="pay-form" id="payForm" novalidate>
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Jina Lako Kamili</label>
+                <input type="text" id="payNameInput" placeholder="Andika jina lako">
+                <span class="error-msg">Tafadhali weka jina lako.</span>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Namba ya Simu</label>
+                <input type="tel" id="payPhone" placeholder="07XXXXXXXX">
+                <span class="error-msg">Tafadhali weka namba ya simu.</span>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-map-marker-alt"></i> Eneo la Uwasilishaji</label>
+                <input type="text" id="payLocation" placeholder="Mji/Eneo unakopatikana">
+                <span class="error-msg">Tafadhali weka eneo.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block pay-btn"><i class="fas fa-credit-card"></i> Lipia Sasa — <span id="payTotal"></span></button>
+        </form>
+        <div class="pay-success" id="paySuccess">
+            <span class="success-icon"><i class="fas fa-check-circle"></i></span>
+            <h3>Maombi Yamewasilishwa!</h3>
+            <p>Asante kwa kununua na MSEMA KWEL STORE. Tutawasiliana nawe hivi karibuni kuthibitisha maagizo yako.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ════ CART DRAWER ════ -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+        <h3><i class="fas fa-shopping-cart"></i> Kikapu Chako</h3>
+        <button class="cart-close" id="cartClose">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <p class="cart-empty">Kikapu chako ni tupu.</p>
+    </div>
+    <div class="cart-drawer-footer">
+        <div class="cart-total">
+            <span>Jumla:</span>
+            <strong id="cartTotal">Tsh 0</strong>
+        </div>
+        <button class="btn btn-primary btn-block" id="checkoutBtn"><i class="fas fa-credit-card"></i> Lipia Sasa</button>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="pikipiki.js"></script>
+</body>
+</html>

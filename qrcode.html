@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="sw" data-lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code - MSEMA KWEL STORE</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #047857;
+            --primary-dark: #065F46;
+            --primary-light: #ECFDF5;
+            --secondary: #FACC15;
+            --bg: #F5F5F5;
+            --card: #FFFFFF;
+            --text: #0F172A;
+            --text2: #666666;
+            --text3: #999999;
+            --border: #E5E5E5;
+            --success: #16A34A;
+            --dark: #064E3B;
+            --radius: 12px;
+            --radius-sm: 8px;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .top-banner {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            text-align: center;
+            padding: 16px 0;
+        }
+        .top-banner h1 {
+            font-size: 1.4rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--secondary);
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .top-banner p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px 16px;
+        }
+
+        .qr-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .qr-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            padding: 30px 24px 24px;
+        }
+        .qr-header .store-icon { font-size: 3rem; margin-bottom: 10px; display: block; }
+        .qr-header h2 { font-size: 1.3rem; font-weight: 800; margin-bottom: 4px; }
+        .qr-header p { font-size: 0.85rem; opacity: 0.85; }
+
+        .qr-body { padding: 30px 24px; }
+
+        .url-input-group {
+            margin-bottom: 24px;
+        }
+        .url-input-group label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+            text-align: left;
+        }
+        .url-input-group input {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 0.9rem;
+            font-family: inherit;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--bg);
+            color: var(--text);
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .url-input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(4,120,87,0.1);
+        }
+
+        .btn-generate {
+            width: 100%;
+            padding: 13px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            font-family: inherit;
+            border: none;
+            border-radius: var(--radius-sm);
+            background: var(--primary);
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+            margin-bottom: 20px;
+        }
+        .btn-generate:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(4,120,87,0.3);
+        }
+        .btn-generate:active { transform: scale(0.98); }
+        .btn-generate:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .qr-display {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background: #fff;
+            border: 2px dashed var(--border);
+            border-radius: var(--radius);
+        }
+        .qr-display.active { display: block; }
+
+        .qr-display #qrcode {
+            display: inline-block;
+            padding: 16px;
+            background: #fff;
+            border-radius: 8px;
+        }
+        .qr-display #qrcode img,
+        .qr-display #qrcode canvas {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .qr-loading {
+            display: none;
+            padding: 40px 0;
+            color: var(--text2);
+            font-size: 0.9rem;
+        }
+        .qr-loading.active { display: block; }
+        .qr-loading .spinner {
+            width: 36px; height: 36px;
+            border: 3px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .qr-error {
+            display: none;
+            padding: 16px;
+            background: #FEF2F2;
+            border: 1px solid #FECACA;
+            border-radius: var(--radius-sm);
+            color: #DC2626;
+            font-size: 0.85rem;
+            margin: 12px 0;
+        }
+        .qr-error.active { display: block; }
+
+        .qr-label {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        .qr-url {
+            margin-top: 6px;
+            font-size: 0.75rem;
+            color: var(--text2);
+            word-break: break-all;
+        }
+        .qr-instruction {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--text2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .qr-instruction i {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .btn-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-print, .btn-download {
+            flex: 1;
+            padding: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            font-family: inherit;
+            border: none;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+        .btn-print {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-print:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(4,120,87,0.3);
+        }
+        .btn-download {
+            background: var(--bg);
+            color: var(--text);
+            border: 1.5px solid var(--border);
+        }
+        .btn-download:hover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .store-footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 0.7rem;
+            color: var(--text3);
+            border-top: 1px solid var(--border);
+            background: var(--card);
+            margin-top: 30px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        .back-link:hover { color: var(--primary-dark); }
+
+        @media print {
+            body { background: #fff; }
+            .top-banner, .url-input-group, .btn-generate, .btn-actions, .store-footer, .back-link, .qr-instruction, .qr-loading, .qr-error { display: none !important; }
+            .container { padding: 10px; max-width: 100%; }
+            .qr-card { box-shadow: none; border: none; }
+            .qr-header { background: var(--primary) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .qr-display { border: none; padding: 10px; }
+            .qr-display.active { display: block !important; }
+        }
+
+        @media (max-width: 480px) {
+            .top-banner h1 { font-size: 1rem; letter-spacing: 1px; }
+            .qr-header { padding: 24px 16px 20px; }
+            .qr-body { padding: 20px 16px; }
+            .btn-actions { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-banner">
+    <h1>MSEMA KWEL STORE</h1>
+    <p>QR Code ya Duka</p>
+</div>
+
+<div class="container">
+    <a href="index.html" class="back-link">
+        <i class="fas fa-arrow-left"></i> Rudi Nyumbani
+    </a>
+
+    <div class="qr-card">
+        <div class="qr-header">
+            <span class="store-icon">📱</span>
+            <h2>QR Code ya Duka</h2>
+            <p>Scani QR code kuingia moja kwa moja kwenye duka</p>
+        </div>
+
+        <div class="qr-body">
+            <div class="url-input-group">
+                <label><i class="fas fa-link"></i> URL ya Duka (Badilisha kama inahitajika)</label>
+                <input type="url" id="storeUrl" placeholder="https://your-store-url.com" value="">
+            </div>
+
+            <button class="btn-generate" id="generateBtn">
+                <i class="fas fa-qrcode"></i> Tengeneza QR Code
+            </button>
+
+            <div class="qr-loading" id="qrLoading">
+                <div class="spinner"></div>
+                <span>Inatengeneza QR Code...</span>
+            </div>
+
+            <div class="qr-error" id="qrError"></div>
+
+            <div class="qr-display" id="qrDisplay">
+                <div id="qrcode"></div>
+                <p class="qr-label">MSEMA KWEL STORE</p>
+                <p class="qr-url" id="qrUrlText"></p>
+                <div class="qr-instruction">
+                    <i class="fas fa-camera"></i>
+                    <span>Scani kamera yako kuingia kwenye duka</span>
+                </div>
+            </div>
+
+            <div class="btn-actions" id="btnActions" style="display:none;">
+                <button class="btn-print" id="printBtn">
+                    <i class="fas fa-print"></i> Chapisha
+                </button>
+                <button class="btn-download" id="downloadBtn">
+                    <i class="fas fa-download"></i> Pakua Picha
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="store-footer">
+    &copy; 2026 MSEMA KWEL STORE. All Rights Reserved.
+</div>
+
+<script>
+(function() {
+    var urlInput = document.getElementById('storeUrl');
+    var generateBtn = document.getElementById('generateBtn');
+    var qrDisplay = document.getElementById('qrDisplay');
+    var qrUrlText = document.getElementById('qrUrlText');
+    var btnActions = document.getElementById('btnActions');
+    var printBtn = document.getElementById('printBtn');
+    var downloadBtn = document.getElementById('downloadBtn');
+    var qrLoading = document.getElementById('qrLoading');
+    var qrError = document.getElementById('qrError');
+    var qrContainer = document.getElementById('qrcode');
+
+    var defaultUrl = window.location.origin + '/index.html';
+    urlInput.value = defaultUrl;
+
+    function showError(msg) {
+        qrError.textContent = msg;
+        qrError.classList.add('active');
+        qrLoading.classList.remove('active');
+        qrDisplay.classList.remove('active');
+        btnActions.style.display = 'none';
+    }
+
+    function hideError() {
+        qrError.classList.remove('active');
+    }
+
+    function showLoading() {
+        qrLoading.classList.add('active');
+        qrDisplay.classList.remove('active');
+        btnActions.style.display = 'none';
+        hideError();
+    }
+
+    function hideLoading() {
+        qrLoading.classList.remove('active');
+    }
+
+    function generateQR() {
+        var url = urlInput.value.trim();
+        if (!url) {
+            urlInput.style.borderColor = '#DC2626';
+            urlInput.focus();
+            showError('Tafadhali weka URL ya duka.');
+            return;
+        }
+        if (!url.match(/^https?:\/\//i)) {
+            url = 'https://' + url;
+            urlInput.value = url;
+        }
+        urlInput.style.borderColor = '';
+        hideError();
+        showLoading();
+        generateBtn.disabled = true;
+
+        qrContainer.innerHTML = '';
+
+        if (typeof QRCode !== 'undefined') {
+            generateWithLibrary(url);
+        } else {
+            generateWithAPI(url);
+        }
+    }
+
+    function generateWithLibrary(url) {
+        try {
+            new QRCode(qrContainer, {
+                text: url,
+                width: 250,
+                height: 250,
+                colorDark: '#064E3B',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            hideLoading();
+            qrUrlText.textContent = url;
+            qrDisplay.classList.add('active');
+            btnActions.style.display = 'flex';
+            generateBtn.disabled = false;
+        } catch(e) {
+            generateWithAPI(url);
+        }
+    }
+
+    function generateWithAPI(url) {
+        var apiSize = 300;
+        var apiUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=' + apiSize + 'x' + apiSize + '&data=' + encodeURIComponent(url) + '&format=png&margin=10&color=064E3B&bgcolor=FFFFFF';
+
+        var img = new Image();
+        img.crossOrigin = 'anonymous';
+        img.onload = function() {
+            hideLoading();
+            qrContainer.innerHTML = '';
+            var wrapper = document.createElement('div');
+            wrapper.style.textAlign = 'center';
+            img.style.maxWidth = '100%';
+            img.style.height = 'auto';
+            img.style.borderRadius = '8px';
+            wrapper.appendChild(img);
+            qrContainer.appendChild(wrapper);
+            qrUrlText.textContent = url;
+            qrDisplay.classList.add('active');
+            btnActions.style.display = 'flex';
+            generateBtn.disabled = false;
+        };
+        img.onerror = function() {
+            hideLoading();
+            generateWithCanvas(url);
+        };
+        img.src = apiUrl;
+    }
+
+    function generateWithCanvas(url) {
+        try {
+            if (typeof QRCode === 'undefined') {
+                hideLoading();
+                showError('Imeshindikana kutengeneza QR Code. Tafadhali angalia muunganisho wa intaneti.');
+                generateBtn.disabled = false;
+                return;
+            }
+            generateWithLibrary(url);
+        } catch(e) {
+            hideLoading();
+            showError('Imeshindikana kutengeneza QR Code. Tafadhali jaribu tena.');
+            generateBtn.disabled = false;
+        }
+    }
+
+    generateBtn.addEventListener('click', generateQR);
+
+    urlInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') generateQR();
+    });
+
+    printBtn.addEventListener('click', function() {
+        window.print();
+    });
+
+    downloadBtn.addEventListener('click', function() {
+        var qrImg = qrContainer.querySelector('img');
+        if (qrImg) {
+            var link = document.createElement('a');
+            link.download = 'MSEMA-KWEL-QRCode.png';
+            link.href = qrImg.src;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            return;
+        }
+        var qrCanvas = qrContainer.querySelector('canvas');
+        if (qrCanvas) {
+            var link = document.createElement('a');
+            link.download = 'MSEMA-KWEL-QRCode.png';
+            link.href = qrCanvas.toDataURL('image/png');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    });
+
+    generateQR();
+})();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</body>
+</html>
