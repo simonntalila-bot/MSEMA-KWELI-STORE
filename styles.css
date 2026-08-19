@@ -259,6 +259,114 @@ input, select, textarea { font-family: inherit; }
 .footer-bottom { text-align: center; padding: 16px 0; }
 .footer-bottom p { font-size: 0.72rem; color: #777; }
 
+/* ══ PRODUCT CATEGORIES ══ */
+.categories-section { background: var(--bg); }
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+.category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    padding: 36px 24px 28px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+.category-card:hover .cat-card-arrow {
+    transform: translateX(4px);
+    opacity: 1;
+}
+.category-card:hover .cat-card-shine {
+    transform: translateX(100%);
+}
+.cat-card-shine {
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+}
+.cat-card-icon {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2rem;
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,255,255,0.25);
+    transition: transform 0.3s, background 0.3s;
+}
+.category-card:hover .cat-card-icon {
+    transform: scale(1.1);
+    background: rgba(255,255,255,0.3);
+}
+.cat-card-title {
+    font-size: 1.15rem; font-weight: 800;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+.cat-card-desc {
+    font-size: 0.78rem;
+    opacity: 0.9;
+    line-height: 1.5;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+.cat-card-arrow {
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    font-size: 0.85rem;
+    margin-top: 4px;
+    opacity: 0.6;
+    transform: translateX(0);
+    transition: all 0.3s ease;
+}
+.category-card:hover .cat-card-arrow { opacity: 1; }
+
+/* Pikipiki - Vibrant Orange/Amber */
+.cat-pikipiki {
+    background: linear-gradient(135deg, #F97316, #EA580C, #C2410C);
+    box-shadow: 0 8px 30px rgba(249,115,22,0.35);
+}
+.cat-pikipiki:hover { box-shadow: 0 16px 50px rgba(249,115,22,0.45); }
+
+/* Bajaji - Bold Red/Crimson */
+.cat-bajaji {
+    background: linear-gradient(135deg, #EF4444, #DC2626, #B91C1C);
+    box-shadow: 0 8px 30px rgba(239,68,68,0.35);
+}
+.cat-bajaji:hover { box-shadow: 0 16px 50px rgba(239,68,68,0.45); }
+
+/* Guta - Deep Blue/Indigo */
+.cat-guta {
+    background: linear-gradient(135deg, #3B82F6, #2563EB, #1D4ED8);
+    box-shadow: 0 8px 30px rgba(59,130,246,0.35);
+}
+.cat-guta:hover { box-shadow: 0 16px 50px rgba(59,130,246,0.45); }
+
+/* Magodolo - Rich Green/Emerald */
+.cat-magodolo {
+    background: linear-gradient(135deg, #10B981, #059669, #047857);
+    box-shadow: 0 8px 30px rgba(16,185,129,0.35);
+}
+.cat-magodolo:hover { box-shadow: 0 16px 50px rgba(16,185,129,0.45); }
+
 /* ══ RESPONSIVE ══ */
 @media (max-width: 768px) {
     .navbar-links {
@@ -273,6 +381,11 @@ input, select, textarea { font-family: inherit; }
     .hero-slide { min-height: 480px; padding: 50px 0 40px; }
     .hero-title { font-size: 1.6rem; }
     .hero-tagline { font-size: 0.85rem; }
+    .categories-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    .category-card { padding: 28px 16px 22px; }
+    .cat-card-icon { width: 56px; height: 56px; font-size: 1.5rem; }
+    .cat-card-title { font-size: 0.95rem; }
+    .cat-card-desc { font-size: 0.72rem; }
     .why-grid { grid-template-columns: 1fr; max-width: 360px; margin: 0 auto; }
     .contact-layout {
         grid-template-columns: 1fr;
@@ -284,5 +397,10 @@ input, select, textarea { font-family: inherit; }
 }
 
 @media (max-width: 480px) {
+    .categories-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .category-card { padding: 22px 12px 18px; border-radius: 12px; }
+    .cat-card-icon { width: 48px; height: 48px; font-size: 1.3rem; border-radius: 14px; }
+    .cat-card-title { font-size: 0.85rem; }
+    .cat-card-desc { font-size: 0.68rem; display: none; }
     .hero-title { font-size: 1.6rem; }
 }
